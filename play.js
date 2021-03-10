@@ -1,12 +1,19 @@
 const connect = require("./client");
 
-
-//connect();
 const client = connect()
 
+client.on("connect", () => {
+  client.write( 'Name: ABD' );
+  console.log("We just connected");
+})
+
 client.on("data", (data) => {
-  console.log("data came back from server...");
-  console.log(data);
+  console.log(data)
+})
+
+
+client.on("end", () => {
+  console.log("Connection ended");
 })
 
 /*
