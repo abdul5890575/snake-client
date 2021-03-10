@@ -1,20 +1,27 @@
 const connect = require("./client");
 
 const client = connect()
+let time = 0;
 
 client.on("connect", () => {
   client.write( 'Name: ABD' );
   console.log("We just connected");
-})
+  for(let i = 0; i < 8; i++) {
+    setTimeout(()=>{ 
+      client.write( "Move: up" );
+    }, time);
+    time +=200
+  }
+});
 
 client.on("data", (data) => {
   console.log(data)
-})
+});
 
 
 client.on("end", () => {
   console.log("Connection ended");
-})
+});
 
 /*
 //---------------
