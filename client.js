@@ -8,6 +8,21 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
 
+  conn.on("connect", () => {
+    conn.write( 'Name: ABD' );
+    console.log("We just connected");
+  });
+  
+  conn.on("data", (data) => {
+    console.log(data)
+    
+  })
+
+  conn.on("end", () => {
+    console.log("Disconnected");
+  });
+
+
   return conn;
 }
 
@@ -18,20 +33,4 @@ module.exports = connect;
 
 
 
-
-//   conn.on("data", (data) => {
-//     // console.log("Connection ended");
-//     console.log(data)
-    
-//   })
-
-//   conn.on("connect", () => {
-//     conn.write( 'Name: ABD' );
-//     console.log("We just connected");
-//   });
-
-
-//   conn.on("end", () => {
-//     console.log("Disconnected");
-//   });
 

@@ -4,21 +4,6 @@ const setupInput = require("./input")
 const client = connect()
 setupInput(client);
 
-client.on("connect", () => {
-  client.write( 'Name: ABD' );
-  console.log("We just connected");
-});
-
-client.on("data", (data) => {
-  console.log(data)
-});
-
-
-
-client.on("end", () => {
-  console.log("Connection ended");
-});
-
 /*
 
 // let connection;  
